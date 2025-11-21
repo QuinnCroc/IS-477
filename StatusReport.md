@@ -29,5 +29,14 @@ Once I merged the files, I verified the work by checking the number of merged ro
 
 These steps are crucial to building the analytical base for the project. Without accurate merging and data validation, meaningful correlations between housing affordability and public safety could be inaccurate. Next, I will assist in refining variable selection for regression analysis and validating how crime types correlate with housing costs across different regions. Overall, this work has provided a strong and reliable foundation for the project’s analytical and visualization stages.
 
+## Quinn Crockling's Contributions
+
+My primary focus is to develop data visualizations and analytical components of the project. After the datasets were merged and cleaned, I began exploring the relationships between housing prices and crime rates. Before I began, I started to verify that the dataset was structured and complete. In order to prevent any inconsistencies during analysis, I made sure that city names and numerical columns were standardized. Once I knew the data was correct, I created an exploratory heatmap plot to visualize the correlation between housing prices and different crime rates.
+
+I used Seaborn to generate a heatmap and it revealed the relationship between variables like median sale price, total crime, violent crime, and property crime. This heatmap made it easier to spot trends, which included the correlation between median housing prices and crime rates. Cities with higher median sale prices showed lower total and violent crime rates, which suggests that there is a possible link between socioeconomic factors and safety levels. The color in the heatmap shows these relationships, which helps us start moving into interpretable insights. 
+
+In addition to this visualization, I added descriptive titles and axis labels and wrote comments explaining the steps of my process. My goal was to make the notebook readable, reproducible, and accessible for our team and the instructor’s review. This structure helped set a foundation for future analysis in later milestones, where we plan to add more visualizations and answer other research questions. 
+
+I worked closely with Krishan throughout this process. While he focused on data cleaning, merging, and preparation, I focused on translating the clean data into visual and statistical outputs. We ensured that our work went with the updated timeline and Milestone 3 requirements. Although this is only a status report and there is a lot still left to do, I was able to answer our first research question (How do housing prices relate to crime rates across different cities?). The results clearly demonstrated that cities with higher housing prices generally experience lower crime rates. I plan to expand this work with more visualizations and modeling to support our findings. 
 
 
