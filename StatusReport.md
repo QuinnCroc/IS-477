@@ -13,4 +13,8 @@ These datasets were merged, cleaned, and analyzed to explore the relationship be
 
 During Week 1–2, we finalized the topic and research questions focused on housing prices and crime rates. In Weeks 3–4, we collected and cleaned datasets to ensure consistency in city names and to remove missing or invalid values. Weeks 5–6 involved merging both datasets and performing initial visualizations, such as heatmaps. In the upcoming weeks, we plan to add more visualizations, perform regression analysis to test relationships, and prepare the final written report and presentation by the project deadline.
 
+## Changes to Project Plan and Progress
+
+Since Milestone 2, our project plan has evolved to focus more on data accuracy and city-level consistency. Initially, we intended to analyze raw datasets separately, but after receiving feedback from Milestone 2, we changed our approach to merge housing and crime data earlier in the process. This allowed us to generate more accurate visualizations and identify clearer relationships. We also changed our scope by focusing on a smaller subset of U.S. cities to reduce data complexity and improve performance. Additionally, we added new visualization techniques, such as correlation heatmaps, to support our analysis. Overall, these changes have improved both our workflow and data reliability.
+
 
