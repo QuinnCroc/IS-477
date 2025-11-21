@@ -17,7 +17,7 @@ During Week 1–2, we finalized the topic and research questions focused on hous
 
 Since Milestone 2, our project plan has evolved to focus more on data accuracy and city-level consistency. Initially, we intended to analyze raw datasets separately, but after receiving feedback from Milestone 2, we changed our approach to merge housing and crime data earlier in the process. This allowed us to generate more accurate visualizations and identify clearer relationships. We also changed our scope by focusing on a smaller subset of U.S. cities to reduce data complexity and improve performance. Additionally, we added new visualization techniques, such as correlation heatmaps, to support our analysis. Overall, these changes have improved both our workflow and data reliability.
 
-​​## Krishan’s Contributions
+## Krishan Amin's Contributions
 
 For this stage of the project, I focused on data acquisition, cleaning, and the integration process. My primary responsibility was to gather and prepare both datasets, which were the United States Crime Rates by City Population and the US Cities Housing Market Data – Live Dataset, so that they could be accurately merged and analyzed. The data preparation phase required attention to file structures, formats, and consistency across tens of thousands of records. By uploading, standardizing, cleaning, and merging the files, this allowed for the later visualizations and statistical analysis.
 
