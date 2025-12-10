@@ -22,5 +22,64 @@ We made sure that our workflow followed reproducible research principles such as
 
 In future versions, we plan to expand on the statistical and predictive aspects of the study. This includes adding regression models to test how housing prices change relative to changes in crime rates while controlling for other socioeconomic factors. We plan to expand the analysis by introducing regression modeling, additional visualization types, and time-series analysis to explore how housing and crime relationships evolve over time. This will allow us to do more than just correlation and begin evaluating potential predictive or causal relationships. Additional visualizations, such as geographic choropleth maps, scatter-plot matrices, and trend lines, will help support the interpretive value of the project. These extensions will allow us to go past correlation and begin exploring potential predictive or causal relationships. Ultimately, this project serves as a foundation for more advanced, policy-relevant research on how affordability and safety interact to shape the urban environments where people live.
 
+# Data profile 
+
+Our project uses two datasets: one about housing market trends, and another about crime rates across US cities. These datasets were cleaned, merged, and studied to see how housing prices relate to crime rates These datasets are publicaly stored in our GitHub:
+
+https://github.com/QuinnCroc/IS-477/releases/tag/v0.2-datasets  
+
+## Housing Market Data
+This project uses two datasets that explore the relationship between housing costs and crime rates in U.S cities. The first dataset, titled “US Cities Housing Market Data – Live Dataset,” was obtained from Kaggle, which sources its data from Redfin’s publicly available U.S. housing market reports. This dataset gives information on the monthly housing market from 2012 to the present. This dataset provides monthly housing market data from 2012 to the present, including variables such as:
+MedianSalePrice
+
+MedianListPrice
+
+PricePerSquareFoot
+
+NumberOfHomesSold
+
+City and State
+This dataset allows us to make ideas by providing other aspects, like where these houses are located. 
+
+## Crime Rate Data
+The second dataset, titled “United States Crime Rates by City Population,” was obtained from Kaggle, which compiles official data from the FBI’s Uniform Crime Reporting (UCR) program. This dataset includes crime statistics for different cities that have different populations. This dataset measures features like crime, property crime, burglary, robbery, and assault. It includes columns such as:
+TotalCrimes
+
+ViolentCrimes
+
+PropertyCrimes
+
+Burglary
+
+Robbery
+
+Population
+Both of these datasets allow us to compare housing prices and crime rates in any city. Once cleaning is performed, the datasets will be merged to reveal patterns and relationships for public safety and housing across the United States.
+
+## Summary of Data Use and Compliance 
+
+Both datasets are licensed for public, educational, and research use, with clear permissions for reuse under open-data terms. We made sure that each dataset was properly referenced to its original source. Redfin was used for housing data and the crime statistics were gathered from FBI UCR program. All attributions follow the licenses posted on Kaggle, which typically align with the Open Database License (ODbL) or CC-BY-NC-SA frameworks.
+
+The datasets do not contain personal or identifying information. They both operate at the city or regional level. This means that there is no risk of exposing individual privacy. There are no confidentiality concerns or legal restrictions regarding data protection because our analysis is based on aggregated statistics.
+
+We have acknowledged the important ethical limitations. Crime data reflects differences in local law enforcement practices, community trust, and reporting accuracy rather than exact measures of safety. Certain crimes could be underreported, while others could be overrepresented. This could be dependent on the region or demographics. We remained weary to not imply direct causation between crime rates and housing prices. We just focused on correlations and long term trends.
+
+Our research follows the University of Illinois Data Ethics and Governance principles. These principles focus on emphasizing transparency, fairness, and reproducibility. All of the data cleaning steps, integration processes, and visualization scripts are shared in our GitHub repository to maintain open standards. Our work aims to provide meaningful insights without bias, misrepresentation, or violation of ethical practices with the data.
+
+# Data quality
+For this project, we wanted to know how useful our merged housing–crime dataset is before we used it to answer any questions. Our main goal was to check how complete and consistent the data looked after we cleaned and merged our two sources. 
+We started with basic checks using info() and isna().sum() on the merged file. The final dataset has about 2.5 million rows and 75 columns. Key fields like CITY, STATE, MEDIAN_SALE_PRICE, and the main crime rate columns (violent_crime, prop_crime, total_crime) are mostly complete. This is key because these variables are important for our research questions. Missing values are more common in secondary housing variables, but those are not key to our analysis. The gaps in the missing values are less serious. We then focused on consistency and merging. The crime data originally came in several CSV files that were split by population range. We used Python and glob to read all of them and combine them into one crime dataset. The housing data came as a separated file with many columns. For the merge to work we would standardize city names in both datasets by stripping extra spaces and converting them to title case. 
+We  removed rows with unusable location information. We dropped rows that were missing the state or city name because we could not match it across the two sources. This choice reduces coverage but increases the reliability of our merged table. Our merged table includes every row and we keep the valid city, a valid state, that appears in both the housing and crime data. We still have some naming limitations. There is some title casing solves that simple issues, but not deep ones like “St. Louis” vs. “Saint Louis.” It also does not solve different spellings for the same place. If the housing file and crime file use different versions of a city name, that city will fall out during the inner join. This means our final dataset could be biased toward cities where the naming matches.
+We also checked the quality of key numeric variables. Housing prices came in as strings with commas and dollar signs. We removed these characters and changed the columns to floats. We ran describe() on variables such as MEDIAN_SALE_PRICE, violent_crime, prop_crime, and total_crime. When the ranges, means, and quartiles looked reasonable, this meant that home prices increase over time, and crime rates fall into believable ranges for cities. We did see extreme values for both prices and crime, that could represent very expensive or very high crime cities. We did not remove these outliers because they couldreflect real conditions. We kept in mind that they can pull trend lines and correlations.
+Another quality issue is connectedness across time and space. The housing data is monthly, while the crime data is yearly. To fix this issue we aggregated housing metrics to the year level before comparing them to crime rates. This puts both on the same yearly timeline. Some housing records represent metro areas while crime data is city reliant. Since we merged on the CITY column, our final dataset should be seen as cities where both housing and crime data exist.
+Coverage and representativeness are also limited. Not every city reports to the FBI in every year, and not every market appears in the Redfin data. We only keep cities that appear in both sources for the same time period. Our findings mainly reflect larger and better reported cities, and we cannot claim they represent the entire country.
+In conclusion, we consider the data quality good enough to support our research questions. Some positives are that there is a large sample size, mostly complete key variables, and stable patterns over time. Some negatives are that there are possible city-name mismatches, uneven coverage across cities and years, and that the data comes from different systems that were not originally linked. We interpret our results as correlations and patterns, not causal effects.
+
+# Findings
+After cleaning and merging the housing and crime datasets, we used summary statistics, correlations, and visualizations to answer our research questions.
+Research Question 1 – How do housing prices relate to crime rates across different cities? We created a city summary table. We averaged MEDIAN_SALE_PRICE, violent_crime, prop_crime, and total_crime across time for each city. We calculated the correlation between housing prices and each crime measure. Then we visualized it with a small heatmap. The results show a small negative correlation between median sale price and crime. There is about a –0.14 to –0.15 for violent crime, property crime, and total crime. This means that higher priced cities show slightly lower crime rates on average, but the relationship is not extremely strong. We made a scatterplot with a regression line of median sale price vs. total crime. This shows a downward trend of as home prices go up, total crime tends to go down. Our research shows that cities with more expensive housing are often somewhat safer, though is only a correlation and not proof of cause.
+Research Question 2 – Do cities with higher housing costs consistently experience lower violence or property crime rates? For this question we used quartiles to turn the continuous price variable into four groups. The groups were Low, Medium-Low, Medium-High, and High. We calculated the average violent and property crime rate for each group. The summary table shows a clear pattern. Violent crime averages drop from 531 in the Low price group to about 367 in the High price group. Property crime averages also fall from around 3883 in the Low group to about 3063 in the High group. We plotted these results as two bar charts. One barchart shows the average violent crime rate by price group and the other one is for average property crime rate by price group. Both charts show that the tallest bars are in the Low price group, with heights steadily decreasing toward the High price group. This gives a categorical answer to the question. We believe that our data shows that cities with higher housing costs have lower average violent and property crime rates than cheaper housing markets.
+Research Question 3 – How have housing prices and crime rates changed from 2012 until now? For this question we focused on trends over time. We changed the PERIOD_END column into a year, grouped the data by year, and calculated yearly averages for median sale price and the crime measures. We used a line plot of the average median sale price from 2012 to 2024. The plot shows a clear increase from the high $100,000s to over $440,000. This confirms that housing has become much more expensive over the last decade in the cities covered by our data. On the other hand, when we reshaped the crime columns and plotted violent, property, and total crime rates on the same graph, the lines stayed flat, with small movements up or down. Crime rates do not show the same strong upward or downward trend that housing prices do.
+Our research shows that housing costs and crime move differently over time. Home prices rise, while crime stays the same. In addition, higher priced cities show lower crime rates, and this pattern stays whether we look at correlations, city scatterplots, or price groups.
 
 
