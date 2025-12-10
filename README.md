@@ -94,4 +94,37 @@ Looking ahead, we plan to expand our analysis using statistical models and time-
 # Reproducibility
 To reproduce our results, someone would first clone our GitHub repository and open it locally, then set up a Python 3 environment with the required libraries (pandas, numpy, matplotlib, seaborn, and Jupyter). Next, they would either use the datasets already stored in the data/ folder or download the original Kaggle files using the links in the README and save them in the same data/ directory with the same filenames. After that, they would launch Jupyter Notebook, open our main analysis notebook in the notebooks/ folder, and run all cells from top to bottom without changing the order. The notebook handles loading the raw housing and crime data, cleaning and merging the tables, creating derived variables (like year, city-level averages, and price groups), and generating all summary statistics and visualizations used in the report. Any output tables or figures are created directly by the notebook, so by following these steps, anybody should be able to fully recreate the analysis and confirm that their results match the findings we describe in the README. The workflow follows a step-by-step order: data collection → cleaning → merging → analysis → visualization → reporting. Git tracks changes, and both members commit their sections with messages describing updates.
 
+# References
+
+## Datasets
+Vaseghi, V. (n.d.). US Cities Housing Market Data – Live Dataset [Data set]. Kaggle. Data originally sourced from Redfin U.S. housing market reports.  
+https://www.kaggle.com/datasets/vincentvaseghi/us-cities-housing-market-data  
+
+Kabhishm. (n.d.). United States Crime Rates by City Population [Data set]. Kaggle. Data compiled from the FBI Uniform Crime Reporting (UCR) program.  
+https://www.kaggle.com/datasets/kabhishm/united-states-crime-rates-by-city-population  
+
+## Primary Data Sources (Upstream)
+Redfin. (n.d.). Redfin Data Center: U.S. Housing Market Data. Redfin Corporation.  
+https://www.redfin.com/news/data-center/  
+
+Federal Bureau of Investigation. (n.d.). Uniform Crime Reporting (UCR) Program Crime Data. U.S. Department of Justice.  
+https://ucr.fbi.gov/  
+
+## Software and Tools
+Python Software Foundation. (n.d.). Python (Version 3.x).  
+https://www.python.org/  
+
+pandas development team. (n.d.). pandas: Python Data Analysis Library.  
+https://pandas.pydata.org/  
+
+Hunter, J. D., & Matplotlib contributors. (n.d.). Matplotlib – Python plotting library.  
+https://matplotlib.org/  
+
+Waskom, M., & seaborn contributors. (n.d.). seaborn: Statistical Data Visualization for Python.  
+https://seaborn.pydata.org/  
+
+Kluyver, T., et al. (2016). Jupyter Notebooks – a publishing format for reproducible computational workflows. In *Positioning and Power in Academic Publishing: Players, Agents and Agendas*.  
+https://jupyter.org/
+
+
 
